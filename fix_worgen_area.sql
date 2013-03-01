@@ -81,13 +81,13 @@ UPDATE quest_template SET PrevQuestId = 24602 , NextQuestIdChain = 24680 WHERE i
 UPDATE quest_template SET PrevQuestId = 24679, NextQuestIdChain = =24681 WHERE id = 24680;
 UPDATE quest_template SET PrevQuestId = 24680 WHERE id = =24681;
 
---smart_script ( waiting to be completed due to missing smart_event_quest_completed implementation )
+
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59073,0,0,0,20,1,100,1,14078,0,0,0,11,59073,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14078 Completition - Cast Spell 59073 - To player"); 
 
 /*
 ######################
-# - FASI WORGEN      #
+# - WORGEN PHASES    #
 # - FIX QUEST EVENT  #
 ######################
 */
@@ -102,10 +102,10 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 TRANSIZIONI :
 1-->2 http://www.wowwiki.com/Quest:Lockdown!
 2-->3 http://www.wowwiki.com/Quest:Royal_Orders
-3-->4 http://www.wowwiki.com/Quest:The_Rebel_Lord%27s_Arsenal <<< qui si prende il debuff del morso spell = 72870
+3-->4 http://www.wowwiki.com/Quest:The_Rebel_Lord%27s_Arsenal 
 4-->5 http://www.wowwiki.com/Quest:Save_Krennan_Aranas
 5-->6 http://www.wowwiki.com/Quest:Never_Surrender,_Sometimes_Retreat
-6-->7 http://www.wowwiki.com/Quest:Last_Chance_at_Humanity <<< qui va sulla mappa libera dai cancelli per capirci
+6-->7 http://www.wowwiki.com/Quest:Last_Chance_at_Humanity 
 */
 
 -- Usage of SmartAI for phase swapping
@@ -148,7 +148,7 @@ UPDATE quest_template SET RequiredSpell = 66915 WHERE id = 14154;
 -- Applying Buff to Player on Quest Accepting ( 2 minutes timer, rewarding quest 14154 completition )
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (62218,0,0,0,19,1,100,1,14154,0,0,0,11,62218,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14154 Accepting - Cast Spell 62218 - To player");
--- TODO : spawn dei mob : spell=66849,spell=66925
+-- TODO : mob spawn : spell=66849,spell=66925
 
 -- Save Krennan Arenas
 
