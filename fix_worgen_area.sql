@@ -81,22 +81,20 @@ UPDATE quest_template SET PrevQuestId = 24602 , NextQuestIdChain = 24680 WHERE i
 UPDATE quest_template SET PrevQuestId = 24679, NextQuestIdChain = =24681 WHERE id = 24680;
 UPDATE quest_template SET PrevQuestId = 24680 WHERE id = =24681;
 
---smart_script ( waiting to be completed due to missing smart_event_quest_completed implementation )
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59073,0,0,0,20,1,100,1,14078,0,0,0,11,59073,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14078 Completition - Cast Spell 59073 - To player"); 
 
 /*
 ########-TODO-########
-# - FASI WORGEN      #
+# - WORGEN PHASES    #
 # - FIX QUEST EVENT  #
-# - CLEANUP          #
 ######################
 */
 
 /*
-###############
-# Fasi Worgen #
-###############
+################
+# Worgen Phases #
+################
 -- 59073-59074-59087-67789-68480-68481
 
  -Transizioni 
