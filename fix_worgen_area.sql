@@ -1,11 +1,11 @@
--- This fix is valid on Trinity Core 4.3.4 DB
--- Fix Worgen Starting Area
--- Missing data in Supply Crate 
+--Fix Worgen Starting Area
+--Missing data in Supply Crate 
+--This fix works on TDB 4.3.4 Alpha
 
 UPDATE gameobject_template 
   SET data8 = 14094
     WHERE entry = 195306;
-  
+	
 /*###########################
   # Fix Chain Quest Gilneas #
   ###########################
@@ -81,14 +81,15 @@ UPDATE quest_template SET PrevQuestId = 24602 , NextQuestIdChain = 24680 WHERE i
 UPDATE quest_template SET PrevQuestId = 24679, NextQuestIdChain = =24681 WHERE id = 24680;
 UPDATE quest_template SET PrevQuestId = 24680 WHERE id = =24681;
 
-
+--smart_script ( waiting to be completed due to missing smart_event_quest_completed implementation )
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59073,0,0,0,20,1,100,1,14078,0,0,0,11,59073,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14078 Completition - Cast Spell 59073 - To player"); 
 
 /*
-######################
-# - WORGEN PHASES    #
+########-TODO-########
+# - FASI WORGEN      #
 # - FIX QUEST EVENT  #
+# - CLEANUP          #
 ######################
 */
 
@@ -102,10 +103,10 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 TRANSIZIONI :
 1-->2 http://www.wowwiki.com/Quest:Lockdown!
 2-->3 http://www.wowwiki.com/Quest:Royal_Orders
-3-->4 http://www.wowwiki.com/Quest:The_Rebel_Lord%27s_Arsenal 
+3-->4 http://www.wowwiki.com/Quest:The_Rebel_Lord%27s_Arsenal <<< qui si prende il debuff del morso spell = 72870
 4-->5 http://www.wowwiki.com/Quest:Save_Krennan_Aranas
 5-->6 http://www.wowwiki.com/Quest:Never_Surrender,_Sometimes_Retreat
-6-->7 http://www.wowwiki.com/Quest:Last_Chance_at_Humanity 
+6-->7 http://www.wowwiki.com/Quest:Last_Chance_at_Humanity <<< qui va sulla mappa libera dai cancelli per capirci
 */
 
 -- Usage of SmartAI for phase swapping
@@ -143,18 +144,32 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 
 -- Evento By The Skin of His Teeth
 
--- Modify the quest_template to correctly wait the end of the event
+-- Modify the quest_template to correctly wait the end of the event ( it's not required but it's logically correct )
 UPDATE quest_template SET RequiredSpell = 66915 WHERE id = 14154;
 -- Applying Buff to Player on Quest Accepting ( 2 minutes timer, rewarding quest 14154 completition )
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
-(62218,0,0,0,19,1,100,1,14154,0,0,0,11,62218,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14154 Accepting - Cast Spell 62218 - To player");
--- TODO : mob spawn : spell=66849,spell=66925
+(68218,0,0,0,19,1,100,1,14154,0,0,0,11,68218,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14154 Accepting - Cast Spell 62218 - To player");
+-- TODO : spawn dei mob : spell=66849,spell=66925
 
 -- Save Krennan Arenas
 
 -- Summon King Greymane's Horse 
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68221,0,0,0,19,1,100,1,14293,0,0,0,11,68221,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14293 Accepting - Cast Spell 68221 - To player");
+
+-- Set King Greymane's Horse as vehicle
+DELETE * FROM vehicle_template_accessory WHERE entry = 35905;
+
+INSERT INTO vehicle_template_accessory ( entry, accessory_entry, seat_id, minion, description, summonertype, summonertimer) VALUES 
+(35095,0,0,1,"King Greymane's Horse used as vehicle",1,0);
+
+UPDATE creature_template 
+  SET MovementType = 2,
+      InhabitType = 1
+    WHERE entry = 35905;
+	
+INSERT INTO npc_spellclick_spells ( npc_entry, spell_id, cast_flags, user_type) VALUES
+(35905, 68219, 1, 0);
 -- Waypoints King Greymane's Horse
 
 INSERT INTO waypoints (entry, pointid, position_x, position_y,position_z,point_comment) VALUES
@@ -176,7 +191,9 @@ INSERT INTO waypoints (entry, pointid, position_x, position_y,position_z,point_c
 (35905, 16,-1769.649170, 1409.496704, 19.782454, "King Greymane's Waypoint"),
 (35905, 17,-1771.756470, 1435.351074, 19.835711, "King Greymane's Waypoint");
 
-INSERT INTO creature_template_addon (entry, path_id, mount, bytes1, bytes2, emote, auras) VALUES (35905,359050,0,0,0,0,0); -- TODO
+-- Here we use template_addon 'cause it's a summoned creature, not an existing one
+INSERT INTO creature_template_addon (entry, path_id, mount, bytes1, bytes2, emote, auras) VALUES 
+(35905,359050,0,0,0,0,0);
 
 SET @ACTION = 123456789
 
