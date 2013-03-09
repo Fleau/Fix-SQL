@@ -81,7 +81,7 @@ UPDATE quest_template SET PrevQuestId = 24602 , NextQuestIdChain = 24680 WHERE i
 UPDATE quest_template SET PrevQuestId = 24679, NextQuestIdChain = =24681 WHERE id = 24680;
 UPDATE quest_template SET PrevQuestId = 24680 WHERE id = =24681;
 
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59073,0,0,0,20,1,100,1,14078,0,0,0,11,59073,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14078 Completition - Cast Spell 59073 - To player"); 
 
 /*
@@ -92,9 +92,9 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 */
 
 /*
-################
+#################
 # Worgen Phases #
-################
+#################
 -- 59073-59074-59087-67789-68480-68481
 
  -Transizioni 
@@ -110,28 +110,28 @@ TRANSIZIONI :
 -- Usage of SmartAI for phase swapping
 
 -- From Phase 1 to Phase 2
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59073,0,0,0,20,1,100,1,14078,0,0,0,11,59073,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14078 Completition - Cast Spell 59073 - To player"); 
 
 -- From Phase 2 to Phase 3
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59074,0,0,0,20,2,100,1,14099,0,0,0,11,59074,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14099 Completition - Cast Spell 59074 - To player");
 
 -- From Phase 3 to Phase 4
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59087,0,0,0,20,3,100,1,14159,0,0,0,11,59087,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14159 Completition - Cast Spell 59087 - To player"),
 (72870,0,0,0,4,3,100,1,0,0,0,0,11,72870,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Creature Aggro - Apply Debuff 72870 - To Player");
 
 -- From Phase 4 to Phase 5
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (67789,0,0,0,20,4,100,1,14293,0,0,0,11,67789,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14293 Completition - Cast Spell 67789 - To player");
 
 -- From Phase 5 to Phase 6
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68480,0,0,0,20,5,100,1,14221,0,0,0,11,68480,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14221 Completition - Cast Spell 68480 - To player"); 
 
 -- From Phase 6 to Phase 7 ( DE LAST UAN XDDD )
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68481,0,0,0,20,1,100,1,14375,0,0,0,11,68481,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14375 Completition - Cast Spell 68481 - To player"); 
 
 /*
@@ -145,14 +145,14 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 -- Modify the quest_template to correctly wait the end of the event ( it's not required but it's logically correct )
 UPDATE quest_template SET RequiredSpell = 66915 WHERE id = 14154;
 -- Applying Buff to Player on Quest Accepting ( 2 minutes timer, rewarding quest 14154 completition )
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68218,0,0,0,19,1,100,1,14154,0,0,0,11,68218,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14154 Accepting - Cast Spell 62218 - To player");
 -- TODO : spawn dei mob : spell=66849,spell=66925
 
 -- Save Krennan Arenas
 
 -- Summon King Greymane's Horse 
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68221,0,0,0,19,1,100,1,14293,0,0,0,11,68221,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14293 Accepting - Cast Spell 68221 - To player");
 
 -- Set King Greymane's Horse as vehicle
@@ -221,6 +221,6 @@ INSERT INTO waypoint_scripts (id, delay, command, datalong, datalong2, dataint, 
 68219-->spell
 68228-->effect
 */
-INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chanche, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
+INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68219,0,0,0,27,4,100,1,15,15,0,0,11,68228,33,35753,0,0,0,22,0,0,0,0,0,0,0,"On Spell 68219 Casting - Trigger 68228");
 
