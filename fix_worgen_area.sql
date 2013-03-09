@@ -1,7 +1,8 @@
---Fix Worgen Starting Area
---Missing data in Supply Crate 
---This fix works on TDB 4.3.4 Alpha
+/*Fix Worgen Area
+  Works only on TDB 4.3.4
+*/
 
+/* Missing data in Supply Crate  */
 UPDATE gameobject_template 
   SET data8 = 14094
     WHERE entry = 195306;
@@ -14,7 +15,7 @@ UPDATE gameobject_template
  /*
 1. All Hell Breaks Loose
    Evacuate the Merchant Square
-2. Royal Orders <--- this quest to be teken , needs another quest to be completed, salvaged supplies 14094
+2. Royal Orders <- this quest to be teken , needs another quest to be completed, salvaged supplies 14094
 */
 UPDATE quest_template 
   SET NextQuestIdChain = 14099,
@@ -95,42 +96,42 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 #################
 # Worgen Phases #
 #################
--- 59073-59074-59087-67789-68480-68481
+ 59073-59074-59087-67789-68480-68481
 
  -Transizioni 
 TRANSIZIONI :
-1-->2 http://www.wowwiki.com/Quest:Lockdown!
-2-->3 http://www.wowwiki.com/Quest:Royal_Orders
-3-->4 http://www.wowwiki.com/Quest:The_Rebel_Lord%27s_Arsenal <<< qui si prende il debuff del morso spell = 72870
-4-->5 http://www.wowwiki.com/Quest:Save_Krennan_Aranas
-5-->6 http://www.wowwiki.com/Quest:Never_Surrender,_Sometimes_Retreat
-6-->7 http://www.wowwiki.com/Quest:Last_Chance_at_Humanity <<< qui va sulla mappa libera dai cancelli per capirci
-*/
+1->2 http://www.wowwiki.com/Quest:Lockdown!
+2->3 http://www.wowwiki.com/Quest:Royal_Orders
+3->4 http://www.wowwiki.com/Quest:The_Rebel_Lord%27s_Arsenal <<< qui si prende il debuff del morso spell = 72870
+4->5 http://www.wowwiki.com/Quest:Save_Krennan_Aranas
+5->6 http://www.wowwiki.com/Quest:Never_Surrender,_Sometimes_Retreat
+6->7 http://www.wowwiki.com/Quest:Last_Chance_at_Humanity <<< qui va sulla mappa libera dai cancelli per capirci
 
--- Usage of SmartAI for phase swapping
 
--- From Phase 1 to Phase 2
+ Usage of SmartAI for phase swapping */
+
+/* From Phase 1 to Phase 2 */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59073,0,0,0,20,1,100,1,14078,0,0,0,11,59073,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14078 Completition - Cast Spell 59073 - To player"); 
 
--- From Phase 2 to Phase 3
+/* From Phase 2 to Phase 3 */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59074,0,0,0,20,2,100,1,14099,0,0,0,11,59074,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14099 Completition - Cast Spell 59074 - To player");
 
--- From Phase 3 to Phase 4
+/* From Phase 3 to Phase 4 */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59087,0,0,0,20,3,100,1,14159,0,0,0,11,59087,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14159 Completition - Cast Spell 59087 - To player"),
 (72870,0,0,0,4,3,100,1,0,0,0,0,11,72870,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Creature Aggro - Apply Debuff 72870 - To Player");
 
--- From Phase 4 to Phase 5
+/* From Phase 4 to Phase 5 */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (67789,0,0,0,20,4,100,1,14293,0,0,0,11,67789,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14293 Completition - Cast Spell 67789 - To player");
 
--- From Phase 5 to Phase 6
+/* From Phase 5 to Phase 6 */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68480,0,0,0,20,5,100,1,14221,0,0,0,11,68480,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14221 Completition - Cast Spell 68480 - To player"); 
 
--- From Phase 6 to Phase 7 ( DE LAST UAN XDDD )
+/* From Phase 6 to Phase 7 ( DE LAST UAN XDDD ) */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68481,0,0,0,20,1,100,1,14375,0,0,0,11,68481,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14375 Completition - Cast Spell 68481 - To player"); 
 
@@ -140,22 +141,24 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 ###################
 */
 
--- Evento By The Skin of His Teeth
+/* Evento By The Skin of His Teeth */
 
--- Modify the quest_template to correctly wait the end of the event ( it's not required but it's logically correct )
+/* Modify the quest_template to correctly wait the end of the event ( it's not required but it's logically correct ) */
 UPDATE quest_template SET RequiredSpell = 66915 WHERE id = 14154;
--- Applying Buff to Player on Quest Accepting ( 2 minutes timer, rewarding quest 14154 completition )
+/* Applying Buff to Player on Quest Accepting ( 2 minutes timer, rewarding quest 14154 completition )*/
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68218,0,0,0,19,1,100,1,14154,0,0,0,11,68218,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14154 Accepting - Cast Spell 62218 - To player");
--- TODO : spawn dei mob : spell=66849,spell=66925
+/* TODO : spawn dei mob : spell=66849,spell=66925 */
 
--- Save Krennan Arenas
+/* Save Krennan Arenas */
 
--- Summon King Greymane's Horse 
+/*TODO : auto-mounting of players*/
+
+/* Summon King Greymane's Horse */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68221,0,0,0,19,1,100,1,14293,0,0,0,11,68221,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14293 Accepting - Cast Spell 68221 - To player");
 
--- Set King Greymane's Horse as vehicle
+/* Set King Greymane's Horse as vehicle */
 DELETE * FROM vehicle_template_accessory WHERE entry = 35905;
 
 INSERT INTO vehicle_template_accessory ( entry, accessory_entry, seat_id, minion, description, summonertype, summonertimer) VALUES 
@@ -168,7 +171,7 @@ UPDATE creature_template
 	
 INSERT INTO npc_spellclick_spells ( npc_entry, spell_id, cast_flags, user_type) VALUES
 (35905, 68219, 1, 0);
--- Waypoints King Greymane's Horse
+/* Waypoints King Greymane's Horse */
 
 INSERT INTO waypoints (entry, pointid, position_x, position_y,position_z,point_comment) VALUES
 (35905, 1,-1797.525261, 1403.351074, 19.835711, "King Greymane's Waypoint"),
@@ -189,7 +192,7 @@ INSERT INTO waypoints (entry, pointid, position_x, position_y,position_z,point_c
 (35905, 16,-1769.649170, 1409.496704, 19.782454, "King Greymane's Waypoint"),
 (35905, 17,-1771.756470, 1435.351074, 19.835711, "King Greymane's Waypoint");
 
--- Here we use template_addon 'cause it's a summoned creature, not an existing one
+/* Here we use template_addon 'cause it's a summoned creature, not an existing one */
 INSERT INTO creature_template_addon (entry, path_id, mount, bytes1, bytes2, emote, auras) VALUES 
 (35905,359050,0,0,0,0,0);
 
@@ -218,8 +221,8 @@ INSERT INTO waypoint_data (id, point, position_x, position_y, position_z, orient
 INSERT INTO waypoint_scripts (id, delay, command, datalong, datalong2, dataint, x, y, z, o, guid) VALUES (@ACTION, 0, 20, 359050, 0, 0, 0, 0, 0, 0, @ACTION );
 /* 
   Rescue Krennan Arenas 
-68219-->spell
-68228-->effect
+68219->spell
+68228->effect
 */
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (68219,0,0,0,27,4,100,1,15,15,0,0,11,68228,33,35753,0,0,0,22,0,0,0,0,0,0,0,"On Spell 68219 Casting - Trigger 68228");
