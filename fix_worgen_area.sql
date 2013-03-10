@@ -21,11 +21,11 @@ UPDATE quest_template
   SET NextQuestIdChain = 14099,
       NextQuestId = 14099,
 	  ExclusiveGroup = -14093
-  WHERE entry in (14093,14098);
+  WHERE id in (14093,14098);
   
 UPDATE quest_template 
   SET ExclusiveGroup = -14093
-    WHERE entry = 14094;  
+    WHERE id = 14094;  
 
 /*
 1.Old Divisions
