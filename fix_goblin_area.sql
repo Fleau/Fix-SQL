@@ -14,13 +14,13 @@
 UPDATE quest_template 
   SET NextQuestId = 14115,
       NextQuestIdChain = 14115,
-      ExclusiveGroup= 14113
+      ExclusiveGroup = 14113
     WHERE Id IN (14113,14153);
 
 UPDATE quest_template SET NextQuestIdChain = 14116
     WHERE Id = 14115;
 
-UPDATE quest_template SET PrevQuestId = 14115,NextQuestIdChain = 14120
+UPDATE quest_template SET PrevQuestId = 14115, NextQuestIdChain = 14120
     WHERE Id = 14116;
 
 /*
@@ -39,7 +39,7 @@ UPDATE quest_template SET PrevQuestId = 14115,NextQuestIdChain = 14120
 UPDATE quest_template 
   SET NextQuestId = 25473,
       NextQuestIdChain = 25473,
-      ExclusiveGroup= 14069
+      ExclusiveGroup = 14069
     WHERE Id IN (14069,14075);
 
 UPDATE quest_template SET PrevQuestId = 0, NextQuestIdChain = 28349 WHERE Id = 25473;    
@@ -53,7 +53,7 @@ UPDATE quest_template
       NextQuestId = 24520, 
       NextQuestIdChain = 24520, 
       ExclusiveGroup = 28414
-    WHERE Id  IN (28414,24503);--Fourth and Goal
+    WHERE Id  IN (28414,24503);
 
 /*
  Two Similar Updates for 2 different but similar quest!
