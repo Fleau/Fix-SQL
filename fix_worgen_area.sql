@@ -34,7 +34,7 @@ UPDATE quest_template
 4.Brothers In Arms 
 */
 UPDATE quest_template SET NextQuestIdChain = 28850 WHERE id = 14157;
-UPDATE quest_template SET PrevQuestId = 14157 , NextQuestIdChain = 14154 WHERE id = 28850;
+UPDATE quest_template SET PrevQuestId = 14157, NextQuestIdChain = 14154 WHERE id = 28850;
 UPDATE quest_template SET PrevQuestId = 28850, NextQuestIdChain = 26129 WHERE id = 14154;
 UPDATE quest_template SET PrevQuestId = 14154 WHERE id = 26129;
 
@@ -45,7 +45,7 @@ UPDATE quest_template SET PrevQuestId = 14154 WHERE id = 26129;
 3.Save Krennan Aranas
 */
 UPDATE quest_template SET NextQuestIdChain = 14214 WHERE id = 14204;
-UPDATE quest_template SET PrevQuestId = 14204 , NextQuestIdChain = 14293 WHERE id = 14214;
+UPDATE quest_template SET PrevQuestId = 14204, NextQuestIdChain = 14293 WHERE id = 14214;
 UPDATE quest_template SET PrevQuestId = 14214 WHERE id = 14293;
 
 /*
@@ -55,7 +55,7 @@ UPDATE quest_template SET PrevQuestId = 14214 WHERE id = 14293;
 4.Last Stand
 */
 UPDATE quest_template SET NextQuestIdChain = 14218 WHERE id = 14212;
-UPDATE quest_template SET PrevQuestId = 14212 , NextQuestIdChain = 14221 WHERE id = 14218;
+UPDATE quest_template SET PrevQuestId = 14212, NextQuestIdChain = 14221 WHERE id = 14218;
 UPDATE quest_template SET PrevQuestId = 14218, NextQuestIdChain = 14222 WHERE id = 14221;
 UPDATE quest_template SET PrevQuestId = 14221 WHERE id = 14222;
 
@@ -72,19 +72,19 @@ UPDATE quest_template SET PrevQuestId = 14221 WHERE id = 14222;
 10.They Have Allies, But So Do We
 */
 UPDATE quest_template SET NextQuestIdChain = 24904 WHERE id = 24676;
-UPDATE quest_template SET PrevQuestId = 24676 , NextQuestIdChain = 24902 WHERE id = 24904;
+UPDATE quest_template SET PrevQuestId = 24676, NextQuestIdChain = 24902 WHERE id = 24904;
 UPDATE quest_template SET PrevQuestId = 24904, NextQuestIdChain = 24903 WHERE id = 24902;
-UPDATE quest_template SET PrevQuestId = 24902 , NextQuestIdChain = 24920 WHERE id = 24903;
+UPDATE quest_template SET PrevQuestId = 24902, NextQuestIdChain = 24920 WHERE id = 24903;
 UPDATE quest_template SET PrevQuestId = 24903, NextQuestIdChain = 24678 WHERE id = 24920;
-UPDATE quest_template SET PrevQuestId = 24920 , NextQuestIdChain = 24602 WHERE id = 24678;
+UPDATE quest_template SET PrevQuestId = 24920, NextQuestIdChain = 24602 WHERE id = 24678;
 UPDATE quest_template SET PrevQuestId = 24678, NextQuestIdChain = 24679 WHERE id = 24602;
-UPDATE quest_template SET PrevQuestId = 24602 , NextQuestIdChain = 24680 WHERE id = 24679;
+UPDATE quest_template SET PrevQuestId = 24602, NextQuestIdChain = 24680 WHERE id = 24679;
 UPDATE quest_template SET PrevQuestId = 24679, NextQuestIdChain = 24681 WHERE id = 24680;
-UPDATE quest_template SET PrevQuestId = 24680 WHERE id = =24681;
+UPDATE quest_template SET PrevQuestId = 24680 WHERE id = 24681;
 
 
 /*
-########-TODO-########
+######################
 # - WORGEN PHASES    #
 # - FIX QUEST EVENT  #
 ######################
@@ -143,7 +143,7 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 /* Set King Greymane's Horse as vehicle */
 DELETE * FROM vehicle_template_accessory WHERE entry = 35905;
 
-INSERT INTO vehicle_template_accessory ( entry, accessory_entry, seat_id, minion, description, summonertype, summonertimer) VALUES 
+INSERT INTO vehicle_template_accessory ( entry, accessory_entry, seat_id, minion, description, summontype, summontimer) VALUES 
 (35095,0,0,1,"King Greymane's Horse used as vehicle",1,0);
 
 UPDATE creature_template 
