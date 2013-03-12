@@ -108,6 +108,7 @@ TRANSIZIONI :
 
  Usage of SmartAI for phase swapping */
 
+DELETE * FROM smart_scripts WHERE entryorguid IN (59073,59074,59087,67789,68480,68481,72870);
 
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
 (59073,0,0,0,20,1,100,1,14078,0,0,0,11,59073,16,0,0,0,0,1,0,0,0,0,0,0,0,"On Quest 14078 Completition - Cast Spell 59073 - To player"),/* From Phase 1 to Phase 2 */ 
@@ -125,6 +126,7 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 */
 
 /* Evento By The Skin of His Teeth */
+DELETE * FROM smart_scripts WHERE entryorguid IN (62218,68221,68219);
 
 /* Applying Buff to Player on Quest Accepting ( 2 minutes timer, rewarding quest 14154 completition )*/
 INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES
@@ -150,11 +152,13 @@ UPDATE creature_template
   SET MovementType = 2,
       InhabitType = 1
     WHERE entry = 35905;
-	
+
+DELETE * FROM npc_spellclick_spells WHERE npc_entry = 35905;
 INSERT INTO npc_spellclick_spells ( npc_entry, spell_id, cast_flags, user_type) VALUES
 (35905, 68219, 1, 0);
 /* Waypoints King Greymane's Horse */
 
+DELETE * FROM waypoints WHERE entry = 35905;
 INSERT INTO waypoints (entry, pointid, position_x, position_y,position_z,point_comment) VALUES
 (35905, 1,-1797.525261, 1403.351074, 19.835711, "King Greymane's Waypoint"),
 (35905, 2,-1798.400166, 1395.755859, 19.903023, "King Greymane's Waypoint"),
@@ -175,11 +179,13 @@ INSERT INTO waypoints (entry, pointid, position_x, position_y,position_z,point_c
 (35905, 17,-1771.756470, 1435.351074, 19.835711, "King Greymane's Waypoint");
 
 /* Here we use template_addon 'cause it's a summoned creature, not an existing one */
+DELETE * FROM creature_template_addon WHERE entry = 35905;
 INSERT INTO creature_template_addon (entry, path_id, mount, bytes1, bytes2, emote, auras) VALUES 
 (35905,359050,0,0,0,0,0);
 
 SET @ACTION = 123456789;
 
+DELETE * FROM waypoint_data WHERE id = 359050;
 INSERT INTO waypoint_data (id, point, position_x, position_y, position_z, orientation, delay, move_flag, action, action_chance,wpguid) VALUES
 
 (359050, 1,-1797.525261, 1403.351074, 19.835711, 5.002352, 0, 1, @ACTION, 100, 0),
@@ -200,7 +206,9 @@ INSERT INTO waypoint_data (id, point, position_x, position_y, position_z, orient
 (359050, 16,-1769.649170, 1409.496704, 19.782454, 1.850041, 0, 1, @ACTION, 100, 0),
 (359050, 17,-1771.756470, 1435.351074, 19.835711, 5.002352, 0, 1, @ACTION, 100, 0);
 
-INSERT INTO waypoint_scripts (id, delay, command, datalong, datalong2, dataint, x, y, z, o, guid) VALUES (@ACTION, 0, 20, 359050, 0, 0, 0, 0, 0, 0, @ACTION );
+DELETE * FROM waypoint_scripts WHERE datalong = 359050;
+INSERT INTO waypoint_scripts (id, delay, command, datalong, datalong2, dataint, x, y, z, o, guid) VALUES 
+(@ACTION, 0, 20, 359050, 0, 0, 0, 0, 0, 0, @ACTION );
 /* 
   Rescue Krennan Arenas 
 68219->spell
