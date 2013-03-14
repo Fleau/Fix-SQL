@@ -124,6 +124,13 @@ INSERT INTO smart_scripts ( entryorguid, source_type, id , link, event_type, eve
 # Fix Quest Event #
 ###################
 */
+/* STARTING MAP = 638 */
+
+/* Event : Evacuate the Merchant Square */
+/* set the correct map for all the doors */
+UPDATE creature 
+  SET map = 638
+    WHERE id = 35830; /*<- Gilneas Evacuation Facing Marker ( First )*/
 
 /* Evento By The Skin of His Teeth */
 DELETE * FROM smart_scripts WHERE entryorguid IN (62218,68221,68219);
